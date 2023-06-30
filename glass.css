@@ -23,7 +23,7 @@ body {
     }
   }
   .glass-card-grid .glass-card {
-    width: 300px;
+    width: 250px;
     min-height: 350px;
     box-shadow: -2rem 0 3rem -2rem #000;
     padding: 1.5rem;
