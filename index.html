@@ -33,7 +33,7 @@
     data-tag="font" />
   <!--This is the head section-->
   <!-- <style> ... </style> -->
-  <link rel="stylesheet" href="https://unpkg.com/blaze-slider@latest/dist/blaze.css" />
+  <!-- <link rel="stylesheet" href="https://unpkg.com/blaze-slider@latest/dist/blaze.css" /> -->
   <link rel="stylesheet" href="./style.css" />
 </head>
 
@@ -43,8 +43,8 @@
     <link href="./home.css" rel="stylesheet" />
     <div class="home-container">
       <section class="home-hero">
-        <video src="backgroundvid.mp4" loop=""
-          muted="" poster="public/hero-bg.png" preload="auto" autoplay="" playsinline="" class="home-video"></video>
+        <video src="backgroundvid.mp4" loop="" muted="" poster="public/hero-bg.png" preload="auto" autoplay=""
+          playsinline="" class="home-video"></video>
         <header data-thq="thq-navbar" class="home-navbar">
           <a href="#home-container"><img alt="image" src="public/logo-nb-nobg.png" class="home-icon" /></a>
           <a href="#home-container">
@@ -320,19 +320,29 @@
         </div>
 
 
-        <div class="container">
-          <div class="inner">
-            <div class="comparison-slider-wrapper">
-              <div class="comparison-slider">
-                <img src="public/segment1.jpg" alt="image" class="home-image06" />
-                <div class="resize">
-                  <img src="public/segment2.jpg" alt="marioPhoto 1" />
-                </div>
-                <div class="divider"></div>
-              </div>
-            </div>
+        <div class="img-comp-container">
+          <div class="img-comp-img">
+            <img src="public/segment2.jpg">
+          </div>
+          <div class="img-comp-img img-comp-overlay">
+            <img src="public/segment1.jpg">
           </div>
         </div>
+
+       <!--  <div class="custom-home-images">
+          <div class="custom-home-square"></div>
+          <div class="custom-img-comp-container">
+            <div class="custom-img-comp-img">
+              <img src="public/segment2.jpg">
+            </div>
+            <div class="custom-img-comp-img custom-img-comp-overlay">
+              <img src="public/segment1.jpg">
+            </div>
+          </div>
+        </div> -->
+        
+        
+        
 
       </section>
       <section class="home-experience">
@@ -634,7 +644,8 @@
     </div>
   </div>
   <script data-section-id="navbar" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
-  <script src="https://unpkg.com/blaze-slider@latest/dist/blaze-slider.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- <script>initComparisons();</script> -->
   <script src="script.js"></script>
 </body>
 

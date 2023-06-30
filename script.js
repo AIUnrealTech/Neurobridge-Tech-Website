@@ -65,7 +65,7 @@ function closeContactForm() {
 }
 
 
-
+/* 
 const el = document.querySelector('.blaze-slider');
 
 new BlazeSlider(el, {
@@ -96,9 +96,9 @@ slideTitles.forEach((title, index) => {
         // Add the active class to the corresponding slider
         sliders[index].classList.add('slider-active');
     });
-});
+}); */
 
-
+/*------------------------------------------------ SLIDERS-------------------------------------------- */
 
 /* $(document).ready(function () {
     if ($(".comparison-slider")[0]) {
@@ -115,77 +115,106 @@ slideTitles.forEach((title, index) => {
             compSlider.find(".resize img").css({ width: compSliderWidth });
         });
     }
-}); */
+}); 
+
 
 $(document).ready(function () {
-    if ($(".comparison-slider-wrapper .comparison-slider")[0]) {
-        let compSlider = $(".comparison-slider-wrapper .comparison-slider");
+    // If the comparison slider is present on the page lets initialise it, this is good you will include this in the main js to prevent the code from running when not needed
+    if ($(".comparison-slider")[0]) {
+        let compSlider = $(".comparison-slider");
 
+        //let's loop through the sliders and initialise each of them
         compSlider.each(function () {
             let compSliderWidth = $(this).width() + "px";
             $(this).find(".resize img").css({ width: compSliderWidth });
             drags($(this).find(".divider"), $(this).find(".resize"), $(this));
         });
 
+        //if the user resizes the windows lets update our variables and resize our images
         $(window).on("resize", function () {
             let compSliderWidth = compSlider.width() + "px";
             compSlider.find(".resize img").css({ width: compSliderWidth });
         });
     }
-});
+}); */
 
 
 
-function drags(dragElement, resizeElement, container) {
-    let touched = false;
-    window.addEventListener("touchstart", function () {
-        touched = true;
-    });
-    window.addEventListener("touchend", function () {
-        touched = false;
-    });
 
-    dragElement.on("mousedown touchstart", function (e) {
-        dragElement.addClass("draggable");
-        resizeElement.addClass("resizable");
-        let startX = e.pageX ? e.pageX : e.originalEvent.touches[0].pageX;
-        let dragWidth = dragElement.outerWidth();
-        let posX = dragElement.offset().left + dragWidth - startX;
-        let containerOffset = container.offset().left;
-        let containerWidth = container.outerWidth();
-        let minLeft = containerOffset + 10;
-        let maxLeft = containerOffset + containerWidth - dragWidth - 10;
-
-        dragElement.parents().on("mousemove touchmove", function (e) {
-            if (touched === false) {
-                e.preventDefault();
-            }
-
-            let moveX = e.pageX ? e.pageX : e.originalEvent.touches[0].pageX;
-            let leftValue = moveX + posX - dragWidth;
-
-            if (leftValue < minLeft) {
-                leftValue = minLeft;
-            } else if (leftValue > maxLeft) {
-                leftValue = maxLeft;
-            }
-
-            let widthValue =
-                ((leftValue + dragWidth / 2 - containerOffset) * 100) / containerWidth + "%";
-
-            $(".draggable").css("left", widthValue).on("mouseup touchend touchcancel", function () {
-                $(this).removeClass("draggable");
-                resizeElement.removeClass("resizable");
-            });
-
-            $(".resizable").css("width", widthValue);
-        }).on("mouseup touchend touchcancel", function () {
-            dragElement.removeClass("draggable");
-            resizeElement.removeClass("resizable");
-        });
-    }).on("mouseup touchend touchcancel", function (e) {
-        dragElement.removeClass("draggable");
-        resizeElement.removeClass("resizable");
-    });
+function initComparisons() {
+    var x, i;
+    /*find all elements with an "overlay" class:*/
+    x = document.getElementsByClassName("img-comp-overlay");
+    for (i = 0; i < x.length; i++) {
+        /*once for each "overlay" element:
+        pass the "overlay" element as a parameter when executing the compareImages function:*/
+        compareImages(x[i]);
+    }
+    function compareImages(img) {
+        var slider, img, clicked = 0, w, h;
+        /*get the width and height of the img element*/
+        w = img.offsetWidth;
+        h = img.offsetHeight;
+        /*set the width of the img element to 50%:*/
+        img.style.width = (w / 2) + "px";
+        /*create slider:*/
+        slider = document.createElement("DIV");
+        slider.setAttribute("class", "img-comp-slider");
+        /*insert slider*/
+        img.parentElement.insertBefore(slider, img);
+        /*position the slider in the middle:*/
+        slider.style.top = (h / 2) - (slider.offsetHeight / 2) + "px";
+        slider.style.left = (w / 2) - (slider.offsetWidth / 2) + "px";
+        /*execute a function when the mouse button is pressed:*/
+        slider.addEventListener("mousedown", slideReady);
+        /*and another function when the mouse button is released:*/
+        window.addEventListener("mouseup", slideFinish);
+        /*or touched (for touch screens:*/
+        slider.addEventListener("touchstart", slideReady);
+        /*and released (for touch screens:*/
+        window.addEventListener("touchend", slideFinish);
+        function slideReady(e) {
+            /*prevent any other actions that may occur when moving over the image:*/
+            e.preventDefault();
+            /*the slider is now clicked and ready to move:*/
+            clicked = 1;
+            /*execute a function when the slider is moved:*/
+            window.addEventListener("mousemove", slideMove);
+            window.addEventListener("touchmove", slideMove);
+        }
+        function slideFinish() {
+            /*the slider is no longer clicked:*/
+            clicked = 0;
+        }
+        function slideMove(e) {
+            var pos;
+            /*if the slider is no longer clicked, exit this function:*/
+            if (clicked == 0) return false;
+            /*get the cursor's x position:*/
+            pos = getCursorPos(e)
+            /*prevent the slider from being positioned outside the image:*/
+            if (pos < 0) pos = 0;
+            if (pos > w) pos = w;
+            /*execute a function that will resize the overlay image according to the cursor:*/
+            slide(pos);
+        }
+        function getCursorPos(e) {
+            var a, x = 0;
+            e = (e.changedTouches) ? e.changedTouches[0] : e;
+            /*get the x positions of the image:*/
+            a = img.getBoundingClientRect();
+            /*calculate the cursor's x coordinate, relative to the image:*/
+            x = e.pageX - a.left;
+            /*consider any page scrolling:*/
+            x = x - window.pageXOffset;
+            return x;
+        }
+        function slide(x) {
+            /*resize the image:*/
+            img.style.width = x + "px";
+            /*position the slider:*/
+            slider.style.left = img.offsetWidth - (slider.offsetWidth / 2) + "px";
+        }
+    }
 }
-
+initImageComparison();
