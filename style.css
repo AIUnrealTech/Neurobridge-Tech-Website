@@ -463,3 +463,107 @@ html {
 
 
 /*  --------------------------------------  */
+
+
+/* ------------------ Image Slider------------------ */
+
+.container {
+  position: relative;
+  width: 100%;
+  margin: 50px 0;
+  .inner {
+    position: relative;
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 20px 30px;
+    background-color: #eee;
+  }
+}
+
+.comparison-slider-wrapper {
+  position: relative;
+  width: 100%;
+  margin: 20px 0;
+  background-color: white;
+  .comparison-slider {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    border: 5px white solid;
+    box-sizing: border-box;
+    > img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .resize {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 50%;
+      overflow: hidden;
+      > img {
+        display: block;
+      }
+    }
+    .divider {
+      position: absolute;
+      width: 2px;
+      height: 100%;
+      background-color: rgba(256, 256, 256, 0.2);
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      margin-left: -1px;
+      cursor: ew-resize;
+      &:before,
+      &:after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        left: -9px;
+        top: 50%;
+        margin-top: -10px;
+        background-color: white;
+        transform: rotate(45deg);
+        transition: all 0.1s ease-in-out;
+      }
+      &:before {
+        width: 30px;
+        height: 30px;
+        left: -14px;
+        margin-top: -15px;
+      }
+      &:after {
+        width: 20px;
+        height: 20px;
+        left: -9px;
+        margin-top: -10px;
+        background-color: #555;
+      }
+      &.draggable {
+        &:before {
+          width: 30px;
+          height: 30px;
+          left: -14px;
+          margin-top: -15px;
+        }
+        &:after {
+          width: 20px;
+          height: 20px;
+          left: -9px;
+          margin-top: -10px;
+          background-color: #555;
+        }
+      }
+    }
+  }
+}
+
+
+/* -------------------------------------------------- */
