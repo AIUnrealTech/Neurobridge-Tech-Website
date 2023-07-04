@@ -146,7 +146,7 @@ p {
   -webkit-box-pack: start;
   -ms-flex-pack: start;
   justify-content: space-between;
-  
+
   top: 0;
   left: 0;
   right: 0;
@@ -1576,27 +1576,6 @@ p {
   line-height: 24px;
 }
 
-.home-growth {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  max-width: var(--dl-size-size-maxwidth);
-  -webkit-box-align: start;
-  -ms-flex-align: start;
-  align-items: flex-start;
-  padding-top: var(--dl-space-space-fiveunits);
-  padding-left: var(--dl-space-space-fiveunits);
-  padding-right: var(--dl-space-space-fiveunits);
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  padding-bottom: var(--dl-space-space-fiveunits);
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-}
 
 .home-content06 {
   gap: var(--dl-space-space-threeunits);
@@ -1924,6 +1903,30 @@ p {
   object-fit: cover;
 }
 
+/* --------------------------------- Solutions ------------------------------------ */
+
+.home-growth {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: var(--dl-size-size-maxwidth);
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  padding-top: var(--dl-space-space-fiveunits);
+  padding-left: var(--dl-space-space-fiveunits);
+  padding-right: var(--dl-space-space-fiveunits);
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  padding-bottom: var(--dl-space-space-fiveunits);
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
 .home-content08 {
   gap: var(--dl-space-space-threeunits);
   width: 100%;
@@ -2218,6 +2221,8 @@ p {
   color: rgb(255, 255, 255);
   line-height: 24px;
 }
+
+/* --------------------------------------------------------- */
 
 .home-testimonial1 {
   gap: var(--dl-space-space-oneandhalfunits);
