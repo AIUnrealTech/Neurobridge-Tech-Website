@@ -1925,6 +1925,7 @@ p {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  /* flex-wrap: wrap; */
 }
 
 .home-content08 {
@@ -1933,7 +1934,7 @@ p {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  max-width: 640px;
+  max-width: 100%;
   -webkit-box-align: start;
   -ms-flex-align: start;
   align-items: flex-start;
@@ -2221,6 +2222,29 @@ p {
   color: rgb(255, 255, 255);
   line-height: 24px;
 }
+
+.iframe-widgets {
+  width: 100%;
+  overflow: hidden;
+}
+
+.iframe-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+}
+
+.iframe-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+
 
 /* --------------------------------------------------------- */
 

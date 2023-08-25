@@ -9,7 +9,7 @@
   <meta property="twitter:card" content="summary_large_image" />
   <!-- <style data-tag="reset-style-sheet"></style> -->
   <style data-tag="default-style-sheet">
-    html {
+   /*  html {
       font-family: Inter;
       font-size: 16px;
     }
@@ -23,7 +23,7 @@
       line-height: 1.15;
       color: var(--dl-color-gray-black);
       background-color: var(--dl-color-gray-white);
-    }
+    } */
   </style>
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
@@ -31,20 +31,18 @@
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
     data-tag="font" />
-  <!--This is the head section-->
-  <!-- <style> ... </style> -->
   <link rel="stylesheet" href="https://unpkg.com/blaze-slider@latest/dist/blaze.css" />
   <link rel="stylesheet" href="./style.css" />
+  <script type="text/javascript" src="https://unpkg.com/dangerous-html/dist/default/lib.umd.js"></script>
+  <link href="./home.css" rel="stylesheet" />
 </head>
 
 <body>
   <div>
-    <script type="text/javascript" src="https://unpkg.com/dangerous-html/dist/default/lib.umd.js"></script>
-    <link href="./home.css" rel="stylesheet" />
     <div class="home-container">
       <section class="home-hero">
-        <video src="backgroundvid.mp4" loop=""
-          muted="" preload="auto" autoplay="" playsinline="" class="home-video"></video>
+        <video src="backgroundvid.mp4" loop="" muted="" preload="auto" autoplay="" playsinline=""
+          class="home-video"></video>
         <header data-thq="thq-navbar" class="home-navbar">
           <a href="#home-container"><img alt="image" src="public/logo-nb-nobg.png" class="home-icon" /></a>
           <a href="#home-container">
@@ -114,11 +112,11 @@
             </p>
           </div>
           <a href="#contact"><button class="button home-button" onclick="openContactForm()">
-            <span>
-              <span>Get started today</span>
-              <br />
-            </span>
-          </button></a>
+              <span>
+                <span>Get started today</span>
+                <br />
+              </span>
+            </button></a>
         </div>
       </section>
       <section class="home-data">
@@ -319,12 +317,13 @@
           </div>
         </div>
 
-
         <div class="iframe-widgets">
-          <iframe src="imageframe.html" height="456" width="640"></iframe>
+          <div class="iframe-container">
+            <iframe src="imageframe.html"></iframe>
+          </div>
         </div>
-
       </section>
+
       <section class="home-experience">
         <div class="home-images1">
           <!-- <div class="home-square1"></div> -->
@@ -550,10 +549,11 @@
       <div class="contact-form-overlay" id="contactFormOverlay">
         <div class="contact-form-dialog">
           <h3 class="contact-form-heading">Contact Us</h3>
-          <form class="contact-form" method="POST" netlify-honeypot="bot-field" data-netlify-recaptcha="true" data-netlify="true">
+          <form class="contact-form" method="POST" netlify-honeypot="bot-field" data-netlify-recaptcha="true"
+            data-netlify="true">
             <p class="hidden" style="display:none">
               <label>
-                Don’t fill this out if you’re human: <input name="bot-field"/>
+                Don’t fill this out if you’re human: <input name="bot-field" />
               </label>
             </p>
             <input type="text" name="name" placeholder="Your Name" required>
